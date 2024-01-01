@@ -37,13 +37,13 @@ jobs:
       env: 
         NEW_VERSION: ${{ steps.version.outputs.version}}
       run: | 
-        docker build -t nachodev85/docker-graphql:NEW_VERSION .
+        docker build -t nachodev85/docker-graphql:$NEW_VERSION .
         docker build -t nachodev85/docker-graphql:latest .
     - name: Push Docker Image
       env: 
         NEW_VERSION: ${{ steps.version.outputs.version}}
       run: |
-        docker push nachodev85/docker-graphql:NEW_VERSION
+        docker push nachodev85/docker-graphql:$NEW_VERSION
         docker push nachodev85/docker-graphql:latest
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
